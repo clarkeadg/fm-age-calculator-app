@@ -4,13 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body { font-size: 15px; min-height: 100%; margin: 0; padding: 0; }
+html, body { font-size: 50px; min-height: 100%; margin: 0; padding: 0; }
 body { height: 100%; }
 #root { min-height: 100vh; }
 
 :root {
   --color-purple: hsl(259, 100%, 65%);
-  --color-red: hsl(0, 100%, 67%);
+  --color-light-red: hsl(0, 100%, 67%);
   --color-white: hsl(0, 0%, 100%);
   --color-off-white: hsl(0, 0%, 94%);
   --color-light-grey: hsl(0, 0%, 86%);
@@ -21,7 +21,7 @@ body { height: 100%; }
 main { background-color: var(--color-off-white); }
 
 .text-purple { color: var(--color-purple); }
-.text-light-red { color: var(--color-red); }
+.text-light-red { color: var(--color-light-red); }
 .text-white { color: var(--color-white); }
 .text-off-white { color: var(--color-off-white); }
 .text-light-grey { color: var(--color-light-grey); }
@@ -29,17 +29,21 @@ main { background-color: var(--color-off-white); }
 .text-off-black { color: var(--color-off-black); }
 
 .bg-purple { background-color: var(--color-purple); }
-.bg-light-red { background-color: var(--color-red); }
+.bg-light-red { background-color: var(--color-light-red); }
 .bg-white { background-color: var(--color-white); }
 .bg-off-white { background-color: var(--color-off-white); }
 .bg-light-grey { background-color: var(--color-light-grey); }
 .bg-smokey-grey { background-color: var(--color-smokey-grey); }
 .bg-off-black { background-color: var(--color-off-black); }
 
+.hover\:bg-off-black:hover { background-color: var(--color-off-black); }
+
 .border-purple { border-color: var(--color-purple); }
-.border-light-red { border-color: var(--color-red); }
+.border-light-red { border-color: var(--color-light-red); }
 .border-white { border-color: var(--color-white); }
 .border-off-white { border-color: var(--color-off-white); }
 .border-light-grey { border-color: var(--color-light-grey); }
 .border-smokey-grey { border-color: var(--color-smokey-grey); }
 .border-off-black { border-color: var(--color-off-black); }
+
+.focus\:border-purple:focus { border-color: var(--color-purple); }
