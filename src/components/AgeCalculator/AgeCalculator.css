@@ -1,0 +1,18 @@
+.age-calculator { background-color: var(--color-white); }
+
+.age-calculator form { border-color: var(--color-off-white); }
+.age-calculator form label { color: var(--color-smokey-grey); }
+.age-calculator form input { color: var(--color-off-black); border-color: var(--color-light-grey); }
+.age-calculator form input:focus { border-color: var(--color-purple); }
+
+.age-calculator form.error label { color: var(--color-light-red); }
+.age-calculator form.error input { border-color: var(--color-light-red); }
+.age-calculator form.error input:focus { border-color: var(--color-purple); }
+.age-calculator form .error-message { color: var(--color-light-red); }
+
+.age-calculator form button { background-color: var(--color-purple); }
+.age-calculator form button:hover { background-color: var(--color-off-black); }
+
+.age-calculator-results { color: var(--color-off-black); }
+.age-calculator-results .result { color: var(--color-purple); }
+
