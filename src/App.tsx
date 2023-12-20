@@ -1,10 +1,10 @@
 import Attribution from './components/Attribution'
-import QRCode from './components/QRCode'
+import AgeCalculator from './components/AgeCalculator/AgeCalculator'
 
 const App = () => {
   return (
     <main className="relative flex min-h-screen justify-center items-center py-10">
-      <QRCode/>
+      <AgeCalculator/>
       <div className="absolute bottom-0 w-full h-10 flex items-center justify-center">
         <Attribution/>
       </div>
