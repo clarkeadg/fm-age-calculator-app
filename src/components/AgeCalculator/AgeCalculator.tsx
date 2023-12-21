@@ -110,7 +110,6 @@ const AgeCalculator = () => {
 
       // Calculate Months
       let months = month - currentMonth;
-      console.log("months", months)
       if (months < 0) {
         months = currentMonth - month - 1;
         if (day <= currentDay) {
