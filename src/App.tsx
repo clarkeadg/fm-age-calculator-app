@@ -3,7 +3,7 @@ import AgeCalculator from './components/AgeCalculator/AgeCalculator'
 
 const App = () => {
   return (
-    <main className="relative min-h-screen pt-[115px] md:pt-[155px]">
+    <main className="relative min-h-screen pt-[115px] md:pt-[155px] pb-10">
       <div className="px-2">
         <AgeCalculator/>
       </div>
