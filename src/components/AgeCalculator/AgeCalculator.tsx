@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useFormik } from 'formik';
+import calculateAge from './calculateAge';
+import isLeapYear from './isLeapYear';
 import CountUp from "react-countup";
 import imageUrl from '../../assets/images/icon-arrow.svg'
 import './AgeCalculator.css'
@@ -15,10 +17,6 @@ const AgeCalculator = () => {
   const [years, setYears] = useState(initialValue)
   const [months, setMonths] = useState(initialValue)
   const [days, setDays] = useState(initialValue)
-
-  const isLeapYear = (year:number) => {
-    return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)
-  }
   
   const formik = useFormik({
     validateOnChange: false,
@@ -97,43 +95,11 @@ const AgeCalculator = () => {
       const currentMonth = now.getMonth()+1;
       const currentDay = now.getDate();
 
-      // Calculate Years
-      let years = currentYear - year;
-      if (currentYear == year && currentMonth == month && currentDay < day) {
-        years-=1;
-      }
-      if (currentMonth == month) {
-        if (day > currentDay) {
-          years-= 1;
-        }
-      } 
-
-      // Calculate Months
-      let months = month - currentMonth;
-      if (months < 0) {
-        months = currentMonth - month - 1;
-        if (day <= currentDay) {
-          months+= 1;
-        }      
-      }
-      if (currentMonth == month) {
-        if (day > currentDay) {
-          months = 11;
-        }
-      }      
-
-      // Calculate Days
-      const monthDays = [31,isLeapYear(currentYear) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];      
-      let days = currentDay - day;
-      if (days < 0) {
-        const totalDays = monthDays[month-1];
-        const daysLeft = totalDays - day;
-        days = currentDay + daysLeft;
-      }
-      
-      setYears(""+years);
-      setMonths(""+months);
-      setDays(""+days); 
+      const age = calculateAge(year, month, day, currentYear, currentMonth, currentDay);
+     
+      setYears(""+age.years);
+      setMonths(""+age.months);
+      setDays(""+age.days); 
 
       setSubmitting(false);
     },
