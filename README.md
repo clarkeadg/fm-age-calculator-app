@@ -28,7 +28,6 @@ This is a solution to the [Age calculator app challenge on Frontend Mentor](http
 - [Vitest](https://vitest.dev/) - Testing framework
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) - For tests
 - [Formik](https://formik.org/) - Form Library
-- [Day.js](https://day.js.org/) - Date Library
 
 ## Getting Started
 
