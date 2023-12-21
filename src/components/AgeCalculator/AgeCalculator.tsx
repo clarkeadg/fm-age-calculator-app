@@ -15,6 +15,10 @@ const AgeCalculator = () => {
   const [years, setYears] = useState(initialValue)
   const [months, setMonths] = useState(initialValue)
   const [days, setDays] = useState(initialValue)
+
+  const isLeapYear = (year:number) => {
+    return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)
+  }
   
   const formik = useFormik({
     validateOnChange: false,
@@ -54,7 +58,7 @@ const AgeCalculator = () => {
       if (!values.year) {
         errors.year = 'This field is required';
       } else {
-        if (Number.isNaN(year) || year < 1) {
+        if (Number.isNaN(year)) {
           errors.year = 'The date is invalid';
         }
       }
@@ -67,8 +71,7 @@ const AgeCalculator = () => {
 
       // Check February
       if (month == 2) {
-        const isLeapYear = ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
-        if (day > (isLeapYear ? 29 : 28)) {
+        if (day > (isLeapYear(year) ? 29 : 28)) {
           errors.day = 'The date is invalid';
         }
       }
@@ -78,8 +81,8 @@ const AgeCalculator = () => {
       const dob = new Date(year, month-1, day);
       const diff = now.getTime() - dob.getTime();
       if (diff < 1) {
-         errors.year = 'Must be in the past';
-       }
+        errors.year = 'Must be in the past';
+      }
 
       return errors;
     },
@@ -89,14 +92,40 @@ const AgeCalculator = () => {
       const month = +values.month;
       const year = +values.year;
 
-      const dob = new Date(year, month-1, day);
       const now = new Date();
+      const currentYear = now.getFullYear();
+      const currentMonth = now.getMonth()+1;
+      const currentDay = now.getDate();
 
-      const diff = new Date(now.getTime() - dob.getTime());
+      let years = currentYear - year;
+      if (currentYear == year && currentMonth == month && currentDay < day) {
+        years-=1;
+      }
 
-      const years = diff.getUTCFullYear() - 1970;
-      const months = diff.getUTCMonth();
-      const days = diff.getUTCDate() - 1;
+      if (currentMonth == month) {
+        if (day > currentDay) {
+          years-= 1;
+        }
+      } 
+
+      let months = month - currentMonth;
+      if (months < 0) {
+        months = currentMonth - month - 1;
+      }
+
+      if (currentMonth == month) {
+        if (day > currentDay) {
+          months = 11;
+        }
+      }      
+
+      const monthDays = [31,isLeapYear(currentYear) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];      
+      let days = currentDay - day;
+      if (days < 0) {
+        const totalDays = monthDays[month-1];
+        const daysLeft = totalDays - day;
+        days = currentDay + daysLeft;
+      }
       
       setYears(""+years);
       setMonths(""+months);
