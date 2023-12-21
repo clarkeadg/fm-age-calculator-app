@@ -111,10 +111,10 @@ const AgeCalculator = () => {
       {/* Form */}
       <div className="age-calculator-form pb-[82px] md:pb-[45px] border-b-2 relative">
         <form autoComplete="off" onSubmit={formik.handleSubmit} className="flex gap-[24px] md:gap-[30px]">
-          <div className={`${formik.errors.day ? "error" : ""} leading-none`}>
+          <div className={`input-day ${formik.errors.day ? "error" : ""} leading-none`}>
             <label htmlFor="day" className="block text-[15px] uppercase tracking-[3px] mb-[10px] md:mb-[15px]">Day</label>
             <input 
-              name="day" 
+              id="day" 
               type="text" 
               placeholder="DD"
               value={formik.values.day}
@@ -125,10 +125,10 @@ const AgeCalculator = () => {
               {formik.errors.day}
             </div> }
           </div>
-          <div className={`${formik.errors.month ? "error" : ""} leading-none`}>
+          <div className={`input-month ${formik.errors.month ? "error" : ""} leading-none`}>
             <label htmlFor="month" className="block text-[15px] uppercase tracking-[3px] mb-[10px] md:mb-[15px]">Month</label>
             <input 
-              name="month"
+              id="month"
               type="text"
               placeholder="MM"
               value={formik.values.month}
@@ -139,10 +139,10 @@ const AgeCalculator = () => {
               {formik.errors.month}
             </div> }
           </div>
-          <div className={`${formik.errors.year ? "error" : ""} leading-none`}>
+          <div className={`input-year ${formik.errors.year ? "error" : ""} leading-none`}>
             <label htmlFor="year" className="block text-[15px] uppercase tracking-[3px] mb-[10px] md:mb-[15px]">Year</label>
             <input 
-              name="year"
+              id="year"
               type="text"
               placeholder="YYYY"
               value={formik.values.year}
@@ -153,7 +153,7 @@ const AgeCalculator = () => {
               {formik.errors.year}
             </div> }
           </div>
-          <button type="submit" className="absolute rounded-full flex items-center justify-center w-[80px] h-[80px] -ml-[40px] -bottom-[40px] left-[50%] md:w-[96px] md:h-[96px] md:-ml-0 md:-bottom-[50px] md:left-auto md:right-[4px]">
+          <button data-testid="submit-button" type="submit" className="absolute rounded-full flex items-center justify-center w-[80px] h-[80px] -ml-[40px] -bottom-[40px] left-[50%] md:w-[96px] md:h-[96px] md:-ml-0 md:-bottom-[50px] md:left-auto md:right-[4px]">
             <img src={imageUrl} alt="down-arrow"/>
           </button>
         </form>        
