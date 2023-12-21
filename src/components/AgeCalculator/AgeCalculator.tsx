@@ -36,7 +36,7 @@ const AgeCalculator = () => {
         errors.day = 'This field is required';
       } else {        
         if (Number.isNaN(day) || day < 1 || day > 31) {
-          errors.day = 'Number is not between 1-31';
+          errors.day = 'Must be a valid day';
         }
       }
 
@@ -45,7 +45,7 @@ const AgeCalculator = () => {
         errors.month = 'This field is required';
       } else {
         if (Number.isNaN(month) || month < 1 || month > 12) {
-          errors.month = 'Number is not between 1-12';
+          errors.month = 'Must be a valid month';
         }
       }
 
@@ -77,7 +77,7 @@ const AgeCalculator = () => {
       const dob = new Date(year, month-1, day);
       const diff = now.getTime() - dob.getTime();
       if (diff < 1) {
-         errors.day = 'The date is in the future';
+         errors.year = 'Must be in the past';
        }
 
       return errors;
@@ -107,6 +107,7 @@ const AgeCalculator = () => {
 
   return (
     <div className="age-calculator w-[840px] max-w-full mx-auto rounded-lg rounded-br-[200px] px-[28px] py-[65px] md:p-[55px]">
+      <h1 className="hidden">Age Calculator</h1>
       {/* Form */}
       <div className="age-calculator-form pb-[82px] md:pb-[45px] border-b-2 relative">
         <form autoComplete="off" onSubmit={formik.handleSubmit} className="flex gap-[24px] md:gap-[30px]">
