@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useFormik } from 'formik';
+import CountUp from "react-countup";
 import imageUrl from '../../assets/images/icon-arrow.svg'
 import './AgeCalculator.css'
 
@@ -161,15 +162,36 @@ const AgeCalculator = () => {
       {/* Results */}
       <div className="age-calculator-results pt-[86px] text-[72px] md:pt-[52px] md:text-[103px] font-bold italic leading-none">
         <div className="age-calculator-results-years mb-[8px] md:mb-1 whitespace-nowrap">
-          <span className="result">{years}</span>
+          <span className="result">
+            {years == initialValue ? years :
+            <CountUp
+              start={0}
+              end={+years}
+              duration={1}
+            /> }
+          </span>
           <span className="px-[8px]">{`year${years == "1" ? "" : "s"}`}</span>
         </div>
         <div className="age-calculator-results-months mb-[8px] md:mb-1 whitespace-nowrap">
-          <span className="result">{months}</span>
+          <span className="result">
+            {months == initialValue ? years :
+            <CountUp
+              start={0}
+              end={+months}
+              duration={2}
+            /> }
+          </span>
           <span className="px-[8px]">{`month${months == "1" ? "" : "s"}`}</span>
         </div>
         <div className="age-calculator-results-days whitespace-nowrap">
-          <span className="result">{days}</span>
+          <span className="result">
+            {days == initialValue ? years :
+            <CountUp
+              start={0}
+              end={+days}
+              duration={2.5}
+            /> }
+          </span>
           <span className="px-[8px]">{`day${days == "1" ? "" : "s"}`}</span>
         </div>
       </div>

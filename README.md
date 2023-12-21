@@ -28,6 +28,7 @@ This is a solution to the [Age calculator app challenge on Frontend Mentor](http
 - [Vitest](https://vitest.dev/) - Testing framework
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) - For tests
 - [Formik](https://formik.org/) - Form Library
+- [React CountUp](https://github.com/glennreyes/react-countup) - For animated numbers
 
 ## Getting Started
 
